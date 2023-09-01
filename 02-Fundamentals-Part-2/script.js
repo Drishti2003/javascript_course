@@ -28,6 +28,7 @@ function calcAge1(birthYear) {
 
 const age1 = calcAge1(2003);
 console.log(age1);
+
 ////////////////////////////////////////////////////////////////////////////
 
 // function expression
@@ -58,7 +59,7 @@ console.log(yearsUntilRetirement(2003, "Drishti"));  */
 
 // Function calling other function
 
-const cutFruit = function (fruit) {
+/*  const cutFruit = function (fruit) {
   return fruit * 4;
 };
 
@@ -71,4 +72,25 @@ function fruitProcessor(apples, oranges) {
 }
 
 console.log(fruitProcessor(5, 0));
-console.log(fruitProcessor(2, 4));
+console.log(fruitProcessor(2, 4));  */
+
+/////////////////////////////CODING CHALLENGE///////////////////////////////
+
+const calcAverage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
+
+const checkWinner = function (avgDolhins, avgKoalas) {
+  if (avgDolhins >= 2 * avgKoalas)
+    console.log(`Dolphins win (${avgDolhins} vs ${avgKoalas})`);
+  else if (avgKoalas >= 2 * avgDolhins)
+    console.log(`Koalas win (${avgKoalas} vs ${avgDolhins})`);
+  else console.log(`No one wins...`);
+};
+
+const avgDolhins = calcAverage(44, 23, 71);
+const avgKoalas = calcAverage(65, 54, 49);
+
+const avgDolhins1 = calcAverage(85, 54, 41);
+const avgKoalas1 = calcAverage(23, 34, 27);
+
+checkWinner(avgDolhins, avgKoalas);
+checkWinner(avgDolhins1, avgKoalas1);
