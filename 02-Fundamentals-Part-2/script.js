@@ -76,7 +76,7 @@ console.log(fruitProcessor(2, 4));  */
 
 /////////////////////////////CODING CHALLENGE///////////////////////////////
 
-const calcAverage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
+/* const calcAverage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
 
 const checkWinner = function (avgDolhins, avgKoalas) {
   if (avgDolhins >= 2 * avgKoalas)
@@ -93,4 +93,66 @@ const avgDolhins1 = calcAverage(85, 54, 41);
 const avgKoalas1 = calcAverage(23, 34, 27);
 
 checkWinner(avgDolhins, avgKoalas);
-checkWinner(avgDolhins1, avgKoalas1);
+checkWinner(avgDolhins1, avgKoalas1);  */
+
+/*  const bills = [125, 555, 44];
+let tips = [],
+  total = [];
+const calctip = (bill) => {
+  if (bill <= 300 && bill >= 50) {
+    return bill * 0.15;
+  } else {
+    return bill * 0.2;
+  }
+};
+
+for (let i = 0; i < bills.length; i++) {
+  tips[i] = calctip(bills[i]);
+  total[i] = tips[i] + bills[i];
+}
+console.log(tips);
+console.log(total);  */
+
+/////////////////////////////////////////////////////////////////////////
+// ARRAYS
+
+/*
+const friends = ["Michael", "Steven", "John"];
+console.log(friends);
+const y = new Array(1991, 1998, 2020, 2003, 2002);
+console.log(y);
+
+console.log(friends[0]);
+
+console.log(years.length);
+console.log(years[years.length - 1]); // to get last element of array
+
+friends[2] = "Jay";
+console.log(friends);
+// friends = ['Bob','Alice'] NOT POSSIBLE
+
+const firstName = "Drishti";
+const drishti = [firstName, "Kirodiwal", 2023 - 2003, "Student", friends];
+console.log(drishti);
+
+//add elements
+const newLenght = friends.push("Drishti");
+console.log(friends);
+console.log(newLenght);
+
+friends.unshift("Peter");
+console.log(friends);
+
+//remove elements
+friends.pop();
+console.log(friends);
+
+friends.shift();
+console.log(friends);
+
+console.log(friends.indexOf("Steven"));
+console.log(friends.indexOf("Drishti"));
+
+console.log(friends.includes("Steven"));
+console.log(friends.includes("Drishti"));
+*/
