@@ -17,7 +17,7 @@ console.log(appleJuice);
 console.log(fruitProcessor(5, 0));
 console.log(fruitProcessor(2, 4));  */
 
-////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*  // Function declaration
 // const age1 = calcAge1(2003); POSSIBLE : can be called before declartion
@@ -29,7 +29,7 @@ function calcAge1(birthYear) {
 const age1 = calcAge1(2003);
 console.log(age1);
 
-////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // function expression
 // const age2 = calcAge2(2003); NOT POSSIBLE : cannot be called before declaration
@@ -41,7 +41,7 @@ const calcAge2 = function (birthYear) {
 const age2 = calcAge2(2003);
 console.log(age2);  */
 
-//////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Arrow function
 /*  const calcAge3 = (birthYear) => 2023 - birthYear;
@@ -55,7 +55,7 @@ const yearsUntilRetirement = (birthYear, firstName) => {
 };
 console.log(yearsUntilRetirement(2003, "Drishti"));  */
 
-/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Function calling other function
 
@@ -74,7 +74,7 @@ function fruitProcessor(apples, oranges) {
 console.log(fruitProcessor(5, 0));
 console.log(fruitProcessor(2, 4));  */
 
-/////////////////////////////CODING CHALLENGE///////////////////////////////
+//////////////////////////////////////////CODING CHALLENGE///////////////////////////////////////////
 
 /* const calcAverage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
 
@@ -113,7 +113,43 @@ for (let i = 0; i < bills.length; i++) {
 console.log(tips);
 console.log(total);  */
 
-/////////////////////////////////////////////////////////////////////////
+/*
+const John = {
+  FullName: "John Smith",
+  Height: 1.95,
+  Weight: 92,
+  calcBMI: function () {
+    this.BMI = this.Weight / (this.Height * this.Height);
+    return this.BMI;
+  },
+};
+
+const Mark = {
+  FullName: "Mark Miller",
+  Height: 1.69,
+  Weight: 78,
+  calcBMI: function () {
+    this.BMI = this.Weight / (this.Height * this.Height);
+    return this.BMI;
+  },
+};
+
+if (John.calcBMI() > Mark.calcBMI()) {
+  console.log(
+    `${John.FullName}'s BMI(${John.calcBMI()}) is higher than ${
+      Mark.FullName
+    }'s BMI(${Mark.calcBMI()})`
+  );
+} else {
+  console.log(
+    `${Mark.FullName}'s BMI(${Mark.calcBMI()}) is higher than ${
+      John.FullName
+    }'s BMI(${John.calcBMI()})`
+  );
+}
+*/
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 // ARRAYS
 
 /*
@@ -156,3 +192,85 @@ console.log(friends.indexOf("Drishti"));
 console.log(friends.includes("Steven"));
 console.log(friends.includes("Drishti"));
 */
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// OBJECTS
+
+/*
+const dk = {
+  FirstName: "Drishti",
+  LastName: "Kirodiwal",
+  Age: 20,
+  Job: "Student",
+  Friends: ["Yana", "Riya", "Tanu"],
+};
+console.log(dk);
+
+console.log(dk.LastName);
+console.log(dk["LastName"]);
+
+const nameKey = "Name";
+console.log(dk["First" + nameKey]);
+// console.log(dk.'First'+nameKey) NOT POSSIBLE
+
+// EXAMPLE
+const interestedIn = prompt(
+  "What do you want to know about Drishti? Choose between FirstName, LastName, Age, Job and Friends."
+);
+if (dk[interestedIn]) {
+  console.log(dk[interestedIn]);
+} else {
+  console.log(
+    "Wrong Request! Choose between FirstName, LastName, Age, Job and Friends."
+  );
+}
+
+dk["Location"] = "Alwar";
+dk.phnNo = 1234567890;
+console.log(dk);
+
+// Challenge
+console.log(
+  `${dk.FirstName} has ${dk.Friends.length} friends, and his best friend is called ${dk.Friends[0]}`
+  );
+*/
+
+/*
+const dk = {
+  FirstName: "Drishti",
+  LastName: "Kirodiwal",
+  BirthYear: 2003,
+  Job: "Student",
+  Friends: ["Yana", "Riya", "Tanu"],
+  hasDriversLicense: false,
+
+  // calcAge: function (BirthYear) {
+  //   return 2023 - BirthYear;
+  // },
+
+  // calcAge: function () {
+  //   return 2023 - this.BirthYear;
+  // },
+
+  calcAge: function () {
+    this.Age = 2023 - this.BirthYear;
+    return this.Age;
+  },
+
+  getSummary: function () {
+    return `${this.FirstName} is a ${this.calcAge()}-year old ${
+      this.Job
+    }, and she has ${this.hasDriversLicense ? "a" : "no"} driving license.`;
+  },
+};
+// console.log(dk.calcAge(2003));
+// console.log(dk["calcAge"](2003));
+
+// console.log(dk.calcAge());
+// console.log(dk.Age);
+
+console.log(dk.getSummary());
+*/
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// ITERATION
