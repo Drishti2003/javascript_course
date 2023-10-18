@@ -149,6 +149,22 @@ if (John.calcBMI() > Mark.calcBMI()) {
 }
 */
 
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+let tips = [],
+  totals = [];
+const calctip = (bill) => {
+  if (bill <= 300 && bill >= 50) {
+    return bill * 0.15;
+  } else {
+    return bill * 0.2;
+  }
+};
+for (let i = 0; i < bills.length; i++) {
+  tips.push(calctip(bills[i]));
+  totals.push(tips[i] + bills[i]);
+}
+console.log(tips, totals);
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // ARRAYS
 
