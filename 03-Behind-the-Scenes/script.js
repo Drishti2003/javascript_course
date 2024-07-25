@@ -157,7 +157,7 @@ addArrow(2,3)
 */
 
 // ****************************************  PRIMITIVES VS OBJECTS  ***************************************
-
+/*
 let age = 30;
 let oldAge = age;
 age = 31;
@@ -182,3 +182,4 @@ const friend = Object.assign({},me);
 friend.age = 22;
 console.log("Friend:",friend);
 console.log("me:",me)
+*/
