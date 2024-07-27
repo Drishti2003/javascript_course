@@ -190,3 +190,54 @@ const max = movements.reduce((acc, mov) => {
 }, movements[0]);
 console.log(max);
 */
+
+///////////////////////////////////////////////// CODING CHALLENGE #2 /////////////////////////////////////////////////
+/*
+const calcAverageHumanAge = function (dogAge) {
+  const humanAge = dogAge.map(dog => (dog <= 2 ? 2 * dog : 16 + dog * 4));
+  const filterHumanAge = humanAge.filter(age => age >= 18);
+  const avgHumanAge = filterHumanAge.reduce(
+    (acc, age, _, arr) => acc + age / arr.length,
+    0
+  );
+  return avgHumanAge;
+};
+console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
+console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
+*/
+
+///////////////////////////////////////////////// CHAINING (MAP, REDUCE, FILTER) METHOD /////////////////////////////////////////////////
+/*
+const eurToUsd = 1.1;
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  .map(mov => mov * eurToUsd)
+  .reduce((acc, mov) => acc + mov, 0);
+
+console.log(totalDepositsUSD);
+*/
+
+///////////////////////////////////////////////// CODING CHALLENGE #3 /////////////////////////////////////////////////
+/*
+const calcAverageHumanAge = dogAge =>
+  dogAge
+    .map(mov => (mov <= 2 ? 2 * mov : 16 + mov * 4))
+    .filter(mov => mov >= 18)
+    .reduce((acc, mov, _, arr) => acc + mov / arr.length,0);
+
+console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
+console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
+*/
+
+///////////////////////////////////////////////// THE FIND METHOD /////////////////////////////////////////////////
+/*
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(firstWithdrawal);
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
+*/
