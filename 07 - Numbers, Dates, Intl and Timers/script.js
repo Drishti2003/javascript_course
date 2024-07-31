@@ -185,3 +185,48 @@ console.log(Date.now());
 future.setFullYear(2040);
 console.log(future);
 */
+
+///////////////////////////////////////////////// Operations With Dates /////////////////////////////////////////////////
+/*
+const future = new Date(2027, 10, 19, 15, 23);
+console.log(+future);
+
+const calcdaysPassed = (date1, date2) =>
+  Math.abs((date2 - date1) / (1000 * 60 * 60 * 24));
+
+console.log(calcdaysPassed(new Date(2037, 3, 14), new Date(2037, 3, 24)));
+console.log(calcdaysPassed(new Date(2037, 3, 14), new Date(2037, 3, 4)));
+*/
+
+///////////////////////////////////////////////// Internationalizing Numbers /////////////////////////////////////////////////
+/*
+const num = 4598345.67;
+
+const options = {
+  style: 'unit',
+  unit: 'mile-per-hour',
+  useGrouping: false,
+};
+
+console.log(new Intl.NumberFormat('en-IN', options).format(num));
+*/
+
+///////////////////////////////////////////////// Timers setTimeout and setInterval /////////////////////////////////////////////////
+/*
+// setTimeout
+const ingredients = ['olives', 'spinach'];
+const pizzaTimer = setTimeout(
+  (ing1, ing2) => console.log(`Here is your pizza with ${ing1} and ${ing2} 🍕`),
+  3000,
+  ...ingredients
+);
+console.log('waiting...');
+
+if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
+
+// setInterval
+setInterval(function () {
+  const now = new Date();
+  console.log(now);
+}, 3000);
+*/
