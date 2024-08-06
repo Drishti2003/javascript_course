@@ -66,4 +66,17 @@ console.dir(Person.prototype.constructor);
 
 ///////////////////////////////////////////////// Prototypal Inheritance on Built-In Objects /////////////////////////////////////////////////
 
-const arr = [3, 6, 4, 5, 6, 9, 3];
+const arr = [3, 6, 6, 4, 5, 6, 9, 3, 9];
+console.log(arr.__proto__);
+console.log(arr.__proto__ === Array.prototype);
+
+console.log(arr.__proto__.__proto__);
+
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+
+console.log(arr.unique());
+
+const h1 = document.querySelector("h1");
+console.dir(h1);
