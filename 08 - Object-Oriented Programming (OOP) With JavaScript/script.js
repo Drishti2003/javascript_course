@@ -110,7 +110,7 @@ mercedes.brake();
 */
 
 ///////////////////////////////////////////////// ES6 Classes /////////////////////////////////////////////////
-
+/*
 // class expression
 // const PersonCl = class{}
 
@@ -146,3 +146,58 @@ drishti.greet();
 // 1. Classes are not hoisted
 // 2. Classes are first-class citizens
 // 3. Classes are executed in strict mode
+*/
+
+///////////////////////////////////////////////// Setters and Getters /////////////////////////////////////////////////
+
+const account = {
+  owner: "drishti",
+  movements: [200, 530, 120, 300],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  set latest(mov) {
+    this.movements.push(mov);
+  },
+};
+
+console.log(account.latest);
+
+account.latest = 50;
+console.log(account.movements);
+
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+
+  // Methos will be added to .prototype property
+  calcAge() {
+    console.log(2024 - this.birthYear);
+  }
+
+  greet() {
+    console.log(`Hey ${this.firstName}!`);
+  }
+
+  get age() {
+    return 2024 - this.birthYear;
+  }
+
+  // set a property that already exist
+  set fullName(name) {
+    console.log(name);
+    if (name.includes(" ")) this._fullName = name;
+    else alert(`${name} is not a full Name!`);
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+}
+
+const drishti = new PersonCl("Drishti Kirodiwal", 2003);
+console.log(drishti.age);
