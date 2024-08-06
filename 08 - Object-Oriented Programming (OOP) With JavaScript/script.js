@@ -65,7 +65,7 @@ console.dir(Person.prototype.constructor);
 */
 
 ///////////////////////////////////////////////// Prototypal Inheritance on Built-In Objects /////////////////////////////////////////////////
-
+/*
 const arr = [3, 6, 6, 4, 5, 6, 9, 3, 9];
 console.log(arr.__proto__);
 console.log(arr.__proto__ === Array.prototype);
@@ -80,3 +80,30 @@ console.log(arr.unique());
 
 const h1 = document.querySelector("h1");
 console.dir(h1);
+*/
+
+///////////////////////////////////////////////// Coding Challenge #1 /////////////////////////////////////////////////
+
+const Cars = function (make, speed) {
+  this.make = make;
+  this.speed = speed;
+};
+
+Cars.prototype.accelerate = function () {
+  this.speed += 10;
+  console.log(`${this.speed} km/h`);
+};
+
+Cars.prototype.brake = function () {
+  this.speed -= 5;
+  console.log(`${this.speed} km/h`);
+};
+
+const bmw = new Cars("BMW", 120);
+const mercedes = new Cars("Mercedes", 95);
+
+bmw.accelerate();
+bmw.brake();
+
+mercedes.accelerate();
+mercedes.brake();
