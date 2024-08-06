@@ -28,7 +28,7 @@ console.log(drishti instanceof Person);
 */
 
 ///////////////////////////////////////////////// Prototypes /////////////////////////////////////////////////
-
+/*
 const Person = function (firstName, birthYear) {
   // instance properties
   this.firstName = firstName;
@@ -56,3 +56,14 @@ console.log(drishti);
 
 console.log(drishti.hasOwnProperty("firstName"));
 console.log(drishti.hasOwnProperty("species"));
+
+console.log(drishti.__proto__);
+console.log(drishti.__proto__.__proto__);
+console.log(drishti.__proto__.__proto__.__proto__);
+
+console.dir(Person.prototype.constructor);
+*/
+
+///////////////////////////////////////////////// Prototypal Inheritance on Built-In Objects /////////////////////////////////////////////////
+
+const arr = [3, 6, 4, 5, 6, 9, 3];
