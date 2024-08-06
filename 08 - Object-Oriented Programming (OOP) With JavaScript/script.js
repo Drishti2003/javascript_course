@@ -149,7 +149,7 @@ drishti.greet();
 */
 
 ///////////////////////////////////////////////// Setters and Getters /////////////////////////////////////////////////
-
+/*
 const account = {
   owner: "drishti",
   movements: [200, 530, 120, 300],
@@ -201,3 +201,19 @@ class PersonCl {
 
 const drishti = new PersonCl("Drishti Kirodiwal", 2003);
 console.log(drishti.age);
+*/
+
+///////////////////////////////////////////////// Static Method /////////////////////////////////////////////////
+
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+  static hey() {
+    console.log("Hey there 👋🏻");
+    console.log(this);
+  }
+}
+
+PersonCl.hey();
