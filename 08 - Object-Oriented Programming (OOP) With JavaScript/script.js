@@ -83,7 +83,7 @@ console.dir(h1);
 */
 
 ///////////////////////////////////////////////// Coding Challenge #1 /////////////////////////////////////////////////
-
+/*
 const Cars = function (make, speed) {
   this.make = make;
   this.speed = speed;
@@ -107,3 +107,42 @@ bmw.brake();
 
 mercedes.accelerate();
 mercedes.brake();
+*/
+
+///////////////////////////////////////////////// ES6 Classes /////////////////////////////////////////////////
+
+// class expression
+// const PersonCl = class{}
+
+// class declaration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  // Methos will be added to .prototype property
+  calcAge() {
+    console.log(2024 - this.birthYear);
+  }
+
+  greet() {
+    console.log(`Hey ${this.firstName}!`);
+  }
+}
+
+const drishti = new PersonCl("Drishti", 2003);
+console.log(drishti);
+drishti.calcAge();
+
+console.log(drishti.__proto__ === PersonCl.prototype);
+
+// PersonCl.prototype.greet = function () {
+//   console.log(`Hey ${this.firstName}!`);
+// };
+
+drishti.greet();
+
+// 1. Classes are not hoisted
+// 2. Classes are first-class citizens
+// 3. Classes are executed in strict mode
