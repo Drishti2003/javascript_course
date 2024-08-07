@@ -544,7 +544,6 @@ console.log(acc1.pin);
 // 3. Public methods
 // 4. Private methods
 
-
 class Account {
   // Public fields
   locale = navigator.language;
@@ -572,27 +571,40 @@ class Account {
 
   deposit(val) {
     this.#movements.push(val);
+    return this;
   }
 
   withdrawal(val) {
     this.deposit(-val);
+    return this;
   }
 
   requestLoan(val) {
-    if (this.#approveLaon(val)) {
+    if (this.#approveLoan(val)) {
       this.deposit(val);
       console.log(`Loan Approved`);
+      return this;
     }
   }
 
   // Private methods
-  #approveLaon(val) {
+  #approveLoan(val) {
     return true;
   }
 }
 
 const acc1 = new Account("Drishti", "INR", 7777);
-console.log(acc1);
 
 // console.log(acc1.#movements);
 // console.log(acc1.#pin)
+
+/////////////////////////////////////////////////
+// Chaining Methods
+acc1
+  .deposit(300)
+  .deposit(500)
+  .withdrawal(35)
+  .requestLoan(25000)
+  .withdrawal(4000);
+
+console.log(acc1);
