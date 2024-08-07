@@ -323,7 +323,7 @@ console.dir(Student.prototype.constructor);
 */
 
 ///////////////////////////////////////////////// Coding Challenge #3 /////////////////////////////////////////////////
-
+/*
 const Cars = function (make, speed) {
   this.make = make;
   this.speed = speed;
@@ -363,3 +363,44 @@ tesla.chargeBttery(90);
 console.log(tesla);
 tesla.brake();
 tesla.accelerate();
+*/
+
+///////////////////////////////////////////////// Inheritance Between "Classes" : ES6 Classes /////////////////////////////////////////////////
+
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+
+  calcAge() {
+    console.log(2024 - this.birthYear);
+  }
+}
+
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    // Always needs to happen first
+    super(fullName, birthYear);
+    this.course = course;
+  }
+
+  introduce() {
+    console.log(`My name is ${this.fullName} and I study ${this.course}.`);
+  }
+
+  calcAge() {
+    console.log(
+      `I'm ${
+        2037 - this.birthYear
+      } years old, but as a student I feel more like ${
+        2037 - this.birthYear + 10
+      }.`
+    );
+  }
+}
+
+// const martha = new StudentCl("Martha Jones", 2012);
+const martha = new StudentCl("Martha Jones", 2012, "Computer Science");
+martha.introduce();
+martha.calcAge();
