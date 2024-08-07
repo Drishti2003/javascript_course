@@ -438,7 +438,7 @@ jay.calcAge();
 */
 
 ///////////////////////////////////////////////// Another Class Example /////////////////////////////////////////////////
-
+/*
 class Account {
   constructor(owner, currency, pin) {
     this.owner = owner;
@@ -479,6 +479,59 @@ acc1.deposit(250);
 acc1.withdrawal(140);
 acc1.requestLoan(1000);
 acc1.approveLaon(1000);
+
+console.log(acc1);
+console.log(acc1.pin);
+*/
+
+///////////////////////////////////////////////// Encapsulation Protected Properties and Methods /////////////////////////////////////////////////
+
+class Account {
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this.locale = navigator.language;
+    // protected property
+    this._pin = pin;
+    this._movements = [];
+
+    console.log(`Thanks for opening an account, ${owner}`);
+  }
+
+  // public interface
+  getMovements() {
+    return this._movements;
+  }
+
+  deposit(val) {
+    this._movements.push(val);
+  }
+
+  withdrawal(val) {
+    this.deposit(-val);
+  }
+
+  _approveLaon(val) {
+    return true;
+  }
+
+  requestLoan(val) {
+    if (this._approveLaon(val)) {
+      this.deposit(val);
+      console.log(`Loan Approved`);
+    }
+  }
+}
+
+const acc1 = new Account("Drishti", "INR", 7777);
+
+// acc1._movements.push(250);
+// acc1._movements.push(-140);
+acc1.deposit(250);
+acc1.withdrawal(140);
+acc1.requestLoan(1000);
+acc1._approveLaon(1000);
+console.log(acc1.getMovements())
 
 console.log(acc1);
 console.log(acc1.pin);
