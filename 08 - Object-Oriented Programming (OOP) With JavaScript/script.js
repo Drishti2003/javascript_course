@@ -485,7 +485,7 @@ console.log(acc1.pin);
 */
 
 ///////////////////////////////////////////////// Encapsulation Protected Properties and Methods /////////////////////////////////////////////////
-
+/*
 class Account {
   constructor(owner, currency, pin) {
     this.owner = owner;
@@ -494,27 +494,27 @@ class Account {
     // protected property
     this._pin = pin;
     this._movements = [];
-
+    
     console.log(`Thanks for opening an account, ${owner}`);
   }
-
+  
   // public interface
   getMovements() {
     return this._movements;
   }
-
+  
   deposit(val) {
     this._movements.push(val);
   }
-
+  
   withdrawal(val) {
     this.deposit(-val);
   }
-
+  
   _approveLaon(val) {
     return true;
   }
-
+  
   requestLoan(val) {
     if (this._approveLaon(val)) {
       this.deposit(val);
@@ -535,3 +535,64 @@ console.log(acc1.getMovements())
 
 console.log(acc1);
 console.log(acc1.pin);
+*/
+
+///////////////////////////////////////////////// Encapsulation Private Class Fields and Methods /////////////////////////////////////////////////
+
+// 1. Public fields
+// 2. Private fields
+// 3. Public methods
+// 4. Private methods
+
+
+class Account {
+  // Public fields
+  locale = navigator.language;
+
+  // Private fields
+  #movements = [];
+  #pin;
+
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    // this.locale = navigator.language;
+    // protected property
+    this.#pin = pin;
+    // this._movements = [];
+
+    console.log(`Thanks for opening an account, ${owner}`);
+  }
+
+  // Public methods
+  // public interface
+  getMovements() {
+    return this.#movements;
+  }
+
+  deposit(val) {
+    this.#movements.push(val);
+  }
+
+  withdrawal(val) {
+    this.deposit(-val);
+  }
+
+  requestLoan(val) {
+    if (this.#approveLaon(val)) {
+      this.deposit(val);
+      console.log(`Loan Approved`);
+    }
+  }
+
+  // Private methods
+  #approveLaon(val) {
+    return true;
+  }
+}
+
+const acc1 = new Account("Drishti", "INR", 7777);
+console.log(acc1);
+
+// console.log(acc1.#movements);
+// console.log(acc1.#pin)
