@@ -538,7 +538,7 @@ console.log(acc1.pin);
 */
 
 ///////////////////////////////////////////////// Encapsulation Private Class Fields and Methods /////////////////////////////////////////////////
-
+/*
 // 1. Public fields
 // 2. Private fields
 // 3. Public methods
@@ -608,3 +608,48 @@ acc1
   .withdrawal(4000);
 
 console.log(acc1);
+*/
+
+///////////////////////////////////////////////// Coding Challenge #4 /////////////////////////////////////////////////
+
+class CarCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  accelerate() {
+    this.speed += 20;
+    this.charge--;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+    return this;
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at ${this.speed} km/h`);
+    return this;
+  }
+}
+
+class EVCl extends CarCl {
+  #charge;
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.#charge = charge;
+  }
+
+  chargeBattery(chargeTo) {
+    this.#charge = chargeTo;
+    return this;
+  }
+}
+
+const rivian = new EVCl("Rivian", 120, 23);
+rivian
+  .accelerate()
+  .accelerate()
+  .accelerate()
+  .brake()
+  .chargeBattery(50)
+  .accelerate();
