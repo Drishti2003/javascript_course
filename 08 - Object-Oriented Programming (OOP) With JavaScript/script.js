@@ -407,7 +407,7 @@ martha.calcAge();
 */
 
 ///////////////////////////////////////////////// Inheritance Between "Classes" : Object.create /////////////////////////////////////////////////
-
+/*
 const PersonProto = {
   calcAge() {
     console.log(2037 - this.birthYear);
@@ -435,3 +435,50 @@ const jay = Object.create(StudentProto);
 jay.init("Jay", 2010, "Computer Science");
 jay.introduce();
 jay.calcAge();
+*/
+
+///////////////////////////////////////////////// Another Class Example /////////////////////////////////////////////////
+
+class Account {
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+    this.pin = pin;
+    this.movements = [];
+    this.locale = navigator.language;
+
+    console.log(`Thanks for opening an account, ${owner}`);
+  }
+
+  // public interface
+  deposit(val) {
+    this.movements.push(val);
+  }
+
+  withdrawal(val) {
+    this.deposit(-val);
+  }
+
+  approveLaon(val) {
+    return true;
+  }
+
+  requestLoan(val) {
+    if (this.approveLaon(val)) {
+      this.deposit(val);
+      console.log(`Loan Approved`);
+    }
+  }
+}
+
+const acc1 = new Account("Drishti", "INR", 7777);
+
+// acc1.movements.push(250);
+// acc1.movements.push(-140);
+acc1.deposit(250);
+acc1.withdrawal(140);
+acc1.requestLoan(1000);
+acc1.approveLaon(1000);
+
+console.log(acc1);
+console.log(acc1.pin);
