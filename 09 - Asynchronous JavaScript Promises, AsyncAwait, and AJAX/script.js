@@ -116,3 +116,4 @@ getCountryAndNeighbour("republic of india");
 const request = fetch(
   "https://restcountries.com/v2/name/republic of india?fullText=true"
 );
+console.log(request);
