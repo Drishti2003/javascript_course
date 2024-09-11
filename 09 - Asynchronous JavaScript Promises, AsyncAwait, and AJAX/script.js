@@ -125,13 +125,6 @@ const renderCountry = function (data, className = "") {
   countriesContainer.style.opacity = 1;
 };
 
-// const request = new XMLHttpRequest();
-// request.open(
-//   "GET",
-//   `https://restcountries.com/v2/name/${country}?fullText=true`
-// );
-// request.send();
-
 // const request = fetch(
 //   "https://restcountries.com/v2/name/republic of india?fullText=true"
 // );
@@ -152,10 +145,31 @@ const renderCountry = function (data, className = "") {
 // };
 // getCountryData("republic of india");
 
+// const getCountryData = function (country) {
+//   fetch(`https://restcountries.com/v2/name/${country}?fullText=true`)
+//     .then((response) => response.json())
+//     .then((data) => renderCountry(data[0]));
+// };
+
+// getCountryData("republic of india");
+
+//////////// Chaining Promises
+
 const getCountryData = function (country) {
+  // Country 1
   fetch(`https://restcountries.com/v2/name/${country}?fullText=true`)
     .then((response) => response.json())
-    .then((data) => renderCountry(data[0]));
+    .then((data) => {
+      renderCountry(data[0]);
+      const neighbour = data[0].borders[0];
+
+      if (!neighbour) return;
+
+      // Country 2
+      return fetch(`https://restcountries.com/v2/alpha/${neighbour}`);
+    })
+    .then((response) => response.json())
+    .then((data) => renderCountry(data, "neighbour"));
 };
 
 getCountryData("republic of india");
