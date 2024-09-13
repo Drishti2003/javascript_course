@@ -464,6 +464,7 @@ console.log("FIRST");
 
 ///////////////////////////////////////  Error Handling With try...catch  ///////////////////////////////////////
 
+/*
 // try {
 //   let y = 1;
 //   const x = 2;
@@ -505,3 +506,60 @@ const whereAmI = async function (country) {
 };
 whereAmI();
 console.log("FIRST");
+*/
+
+///////////////////////////////////////  Returning Values from Async Functions  ///////////////////////////////////////
+
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+const whereAmI = async function (country) {
+  try {
+    // Geolocation
+    const pos = await getPosition();
+    const { latitude: lat, longitude: lng } = pos.coords;
+
+    // Reverse geocoding
+    const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+    if (!resGeo.ok) throw new Error("Problem getting loaction data");
+    const dataGeo = await resGeo.json();
+
+    // country data
+    const res = await fetch(
+      `https://restcountries.com/v2/name/${dataGeo.country}?fullText=true`
+    );
+    if (!res.ok) throw new Error("Problem getting country");
+    const data = await res.json();
+    renderCountry(data[0]);
+
+    return `You are in ${dataGeo.city}, ${dataGeo.country}`;
+  } catch (err) {
+    console.error(`${err} 💥`);
+    renderError(`💥 ${err.meassage}`);
+
+    // Reject promise returned from async function
+    throw err;
+  }
+};
+
+console.log("1: Will get location");
+// const city = whereAmI();
+// console.log(city);
+
+// whereAmI()
+//   .then((city) => console.log(`2: ${city}`))
+//   .catch((err) => console.error(`2: ${err.meassage} 💥`))
+//   .finally(() => console.log("3: Finished getting location"));
+
+(async function () {
+  try {
+    const city = await whereAmI();
+    console.log(`2: ${city}`);
+  } catch (err) {
+    console.error(`2: ${err.meassage} 💥`);
+  }
+  console.log("3: Finished getting location");
+})();
