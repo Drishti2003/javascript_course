@@ -384,6 +384,7 @@ btn.addEventListener("click", whereAmI);
 
 ///////////////////////////////////////  Coding Challenge #2  ///////////////////////////////////////
 
+/*
 const wait = function (seconds) {
   return new Promise(function (resolve) {
     setTimeout(resolve, seconds * 1000);
@@ -429,3 +430,32 @@ createImage("img/img-1.jpg")
     currentImg.style.display = "none";
   })
   .catch((err) => console.error(err));
+*/
+
+///////////////////////////////////////  Consuming Promises with AsyncAwait  ///////////////////////////////////////
+
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+const whereAmI = async function (country) {
+  // Geolocation
+  const pos = await getPosition();
+  const { latitude: lat, longitude: lng } = pos.coords;
+
+  // Reverse geocoding
+  const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+  const dataGeo = await resGeo.json();
+
+  // country data
+  const res = await fetch(
+    `https://restcountries.com/v2/name/${dataGeo.country}?fullText=true`
+  );
+  const data = await res.json();
+  console.log(data);
+  renderCountry(data[0]);
+};
+whereAmI();
+console.log("FIRST");
