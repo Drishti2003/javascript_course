@@ -434,6 +434,7 @@ createImage("img/img-1.jpg")
 
 ///////////////////////////////////////  Consuming Promises with AsyncAwait  ///////////////////////////////////////
 
+/*
 const getPosition = function () {
   return new Promise(function (resolve, reject) {
     navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -456,6 +457,51 @@ const whereAmI = async function (country) {
   const data = await res.json();
   console.log(data);
   renderCountry(data[0]);
+};
+whereAmI();
+console.log("FIRST");
+*/
+
+///////////////////////////////////////  Error Handling With try...catch  ///////////////////////////////////////
+
+// try {
+//   let y = 1;
+//   const x = 2;
+//   x = 3;
+// } catch (err) {
+//   alert(err.message);
+// }
+
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+const whereAmI = async function (country) {
+  try {
+    // Geolocation
+    const pos = await getPosition();
+    const { latitude: lat, longitude: lng } = pos.coords;
+
+    // Reverse geocoding
+    const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+    if (!resGeo.ok) throw new Error("Problem getting loaction data");
+    const dataGeo = await resGeo.json();
+
+    // country data
+    const res = await fetch(
+      `https://restcountries.com/v2/name/${dataGeo.country}?fullText=true`
+    );
+    if (!res.ok) throw new Error("Problem getting country");
+
+    const data = await res.json();
+    console.log(data);
+    renderCountry(data[0]);
+  } catch (err) {
+    console.error(`${err} 💥`);
+    renderError(`💥 ${err.meassage}`);
+  }
 };
 whereAmI();
 console.log("FIRST");
