@@ -27,6 +27,14 @@ const renderError = function (msg) {
   countriesContainer.style.opacity = 1;
 };
 
+const getJSON = function (url, errorMsg = "Something went wrong") {
+  return fetch(url).then((response) => {
+    if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
+
+    return response.json();
+  });
+};
+
 ///////////////////////////////////////
 
 //   https://countries-api-836d.onrender.com/countries/
@@ -510,6 +518,7 @@ console.log("FIRST");
 
 ///////////////////////////////////////  Returning Values from Async Functions  ///////////////////////////////////////
 
+/*
 const getPosition = function () {
   return new Promise(function (resolve, reject) {
     navigator.geolocation.getCurrentPosition(resolve, reject);
@@ -563,3 +572,31 @@ console.log("1: Will get location");
   }
   console.log("3: Finished getting location");
 })();
+*/
+
+///////////////////////////////////////  Running Promises in Parallel  ///////////////////////////////////////
+
+const get3Countries = async function (c1, c2, c3) {
+  try {
+    //   const [data1] = await getJSON(
+    //     `https://restcountries.com/v2/name/${c1}?fullText=true`
+    //   );
+    //   const [data2] = await getJSON(
+    //     `https://restcountries.com/v2/name/${c2}?fullText=true`
+    //   );
+    //   const [data3] = await getJSON(
+    //     `https://restcountries.com/v2/name/${c3}?fullText=true`
+    //   );
+
+    const data = await Promise.all([
+      getJSON(`https://restcountries.com/v2/name/${c1}?fullText=true`),
+      getJSON(`https://restcountries.com/v2/name/${c2}?fullText=true`),
+      getJSON(`https://restcountries.com/v2/name/${c3}?fullText=true`),
+    ]);
+
+    console.log(data.map((d) => d[0].capital));
+  } catch (err) {
+    console.error(err);
+  }
+};
+get3Countries("portugal", "canada", "republic of india");
