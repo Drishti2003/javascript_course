@@ -130,4 +130,9 @@ console.log("Drishti" ?? null);
 console.log(cart.find((el) => el.qunatity >= 2));
 // Promise.resolve("TEST").then((x) => console.log(x));
 
-// import "core-js/stable";
+import "core-js/stable";
+// import "core-js/stable/array/find";
+// import "core-js/stable/promise";
+
+// Profilling async functions
+import "regenerator-runtime/runtime.js";
