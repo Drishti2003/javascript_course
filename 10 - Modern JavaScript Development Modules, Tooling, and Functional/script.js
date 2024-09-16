@@ -5,7 +5,7 @@
 // addToCart("bread", 5);
 // console.log(price, qt);
 
-// console.log("Importing module");
+console.log("Importing module");
 // console.log(shippingCost);
 
 // import * as ShoppingCart from "./shoppingCart.js";
@@ -15,12 +15,12 @@
 // import add, { addToCart, totalPrice as price, qt } from "./shoppingCart.js";
 // console.log(price);
 
-// import add, { cart } from "./shoppingCart.js";
-// add("pizza", 2);
-// add("bread", 5);
-// add("apple", 4);
+import add, { cart } from "./shoppingCart.js";
+add("pizza", 2);
+add("bread", 5);
+add("apple", 4);
 
-// console.log(cart);
+console.log(cart);
 
 ///////////////////////////////////////  Top-Level Await (ES2022)  ///////////////////////////////////////
 
@@ -93,7 +93,8 @@ console.log(shoppingCart2.shippingCost);
 
 ///////////////////////////////////////  Introduction to NPM  ///////////////////////////////////////
 
-import cloneDeep from "./node_modules/lodash-es/cloneDeep.js";
+import cloneDeep from "lodash-es";
+// import cloneDeep from "./node_modules/lodash-es/cloneDeep.js";
 
 const state = {
   cart: [
@@ -109,3 +110,7 @@ state.user.loggedIn = false;
 console.log(stateClone);
 
 console.log(stateDeepClone);
+
+if (module.hot) {
+  module.hot.accept();
+}
